@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 /**
  * The EffortLogDisplayPage class extends the JavaFX Application class and serves as the user interface
  * for displaying logged efforts in the Effort Logger application.
- * I am trying to simulate a merge conflict. I also changed a variable name.
+ * 
  * This class creates a table view to display various details about logged efforts and provides
  * a button to navigate back to the home page.
  *
@@ -27,7 +27,7 @@ public class EffortLogDisplayPage extends Application {
     /**
      * The start method is the entry point for the EffortLogDisplayPage application.
      * It initializes the stage, sets up the UI components, and displays the Effort Log data.
-     * Will I be successful in creating a merge conflict?
+     * Trying to simulate a merge conflict
      * @param stage The primary stage for this application.
      */
     @Override
@@ -84,11 +84,11 @@ public class EffortLogDisplayPage extends Application {
         backButton.setOnAction(event -> Utility.openPage("effortloggingpage", stage));
 
         // Layout to hold the TableView and button
-        VBox verticalBox = new VBox();
-        verticalBox.getChildren().addAll(tableView, backButton);
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(tableView, backButton);
 
         // Create the scene with a specified width and height
-        Scene scene = new Scene(verticalBox, 1000, 800);
+        Scene scene = new Scene(vBox, 1000, 800);
         stage.setScene(scene);
 
         // Center the stage on the screen and display it
