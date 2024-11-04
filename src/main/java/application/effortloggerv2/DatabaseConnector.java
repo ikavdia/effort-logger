@@ -11,19 +11,19 @@ import java.util.Properties;
 public class DatabaseConnector {
 
 	// Database connection parameters
-	private static final String dbHost = "aws.connect.psdb.cloud";
-	private static final String dbName = "cse360project";
+	private static final String dbHost = "aws.connect.psdb.cloud"; // Database host address
+	private static final String dbName = "cse360project"; // Name of the database
 
 	// JDBC Connection object
-	private static Connection connection;
+	private static Connection connection; // Singleton connection to be shared by all methods
 
 	// Static block to initialize the database connection when the class is loaded
 	static {
 		// Set database connection properties
 		Properties props = new Properties();
-		props.setProperty("user", Utility.dbUsername);
-		props.setProperty("password", Utility.dbPassword1 + Utility.dbPassword2 + Utility.dbPassword3);
-		props.setProperty("useSSL", "true");
+		props.setProperty("user", Utility.dbUsername); // Database username
+		props.setProperty("password", Utility.dbPassword1 + Utility.dbPassword2 + Utility.dbPassword3); // Combined password segments
+		props.setProperty("useSSL", "true"); // Enable SSL for secure connection
 
 		try {
 			// Construct the JDBC URL for the database connection
@@ -38,8 +38,8 @@ public class DatabaseConnector {
 		}
 	}
 
-
 	// Author: Akshit Jain
+	// Method to add a new user to the user_credentials table
 	public static void addUser(String name, String password) {
 		try {
 			// Prepare the SQL statement to insert user credentials into the database
@@ -47,7 +47,7 @@ public class DatabaseConnector {
 
 			// Set the parameters in the prepared statement
 			statement.setString(1, name);
-			statement.setString(2, Utility.hashPassword(password));
+			statement.setString(2, Utility.hashPassword(password)); // Hash password for security
 
 			// Execute the update to insert the new user
 			statement.executeUpdate();
@@ -59,6 +59,7 @@ public class DatabaseConnector {
 	}
 
 	// Author: Akshit Jain
+	// Method to validate user credentials and retrieve user role
 	public static String validateUser(String name, String password) {
 		try {
 			// Prepare the SQL statement to select user credentials from the database
@@ -88,6 +89,7 @@ public class DatabaseConnector {
 	}
 
 	// Author: Akshit Jain
+	// Method to log user effort into the EffortLog table
 	public static void logEffort(
 			LocalDateTime startTime,
 			LocalDateTime endTime,
@@ -121,6 +123,7 @@ public class DatabaseConnector {
 	}
 
 	// Author: Ishan Kavdia
+	// Method to fetch data from EffortLog table and populate TableView
 	public static void fetchData(TableView<EffortLogEntry> tableView) {
 		try {
 			Statement statement = connection.createStatement();
@@ -151,12 +154,14 @@ public class DatabaseConnector {
 			resultSet.close();
 			statement.close();
 		} catch (SQLException e) {
+			// Handle any SQL exception that may occur during data fetching
 			Utility.showAlert("Error", "An error occurred!", Alert.AlertType.ERROR);
 			e.printStackTrace();
 		}
 	}
 
 	// Author: Aditya Jarodiya
+	// Method to calculate the average time taken for previous efforts
 	public static double previousEffortsAverage(String project, String lifeCycle, String effortCategory, String plan) {
 		try {
 			// Prepare the SQL statement to calculate the average time taken from the EffortLog table
@@ -189,6 +194,7 @@ public class DatabaseConnector {
 	}
 
 	// Author: Ishan Kavdia
+	// Method to load lists of projects, life cycles, effort categories, and plans into Utility lists
 	public static void loadLists() {
 		try {
 			// Create a statement for executing SQL queries
@@ -231,6 +237,7 @@ public class DatabaseConnector {
 		}
 	}
 
+	// Method to update project-related lists (add or delete items)
 	public static void updateLists(String listName, String action, String value) {
 		try {
 			// Check the action to determine whether to add or delete from the list
