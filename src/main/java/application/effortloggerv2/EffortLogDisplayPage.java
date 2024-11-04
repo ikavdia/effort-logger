@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * This class creates a table view to display various details about logged efforts and provides
  * a button to navigate back to the home page.
- *
+ * Let's simulate a merge conflict in this line
  * @author Ishan Kavdia
  */
 
