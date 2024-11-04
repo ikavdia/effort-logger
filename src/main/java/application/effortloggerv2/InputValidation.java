@@ -13,44 +13,44 @@ import java.util.regex.Pattern;
 public class InputValidation {
 
     /**
-     * Sanitize the input to remove potential security risks.
+     * Sanitizes the input to remove potential security risks.
      *
      * @param input The input string to be sanitized.
-     * @return A sanitized version of the input string.
+     * @return A sanitized version of the input string, with potential malicious characters removed.
      */
     public static String sanitize(String input) {
-        // Check for null input
+        // Check for null input to prevent NullPointerException
         if (input == null) {
             return "";
         }
 
-        // Remove leading and trailing white spaces
+        // Remove leading and trailing white spaces for clean input
         input = input.trim();
 
-        // Prevent SQL injection by removing common SQL injection characters
+        // Prevent SQL injection by removing common SQL injection characters like single quotes, semicolons, double quotes, and backslashes
         input = input.replaceAll("([';\"\\\\])", "");
 
-        // Prevent XSS (Cross-Site Scripting) attacks by converting < and > to HTML entities
+        // Prevent XSS (Cross-Site Scripting) attacks by converting < and > to their HTML entity equivalents
         input = input.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
-        return input;
+        return input; // Return the sanitized input string
     }
 
     /**
-     * Additional custom validation checks (not used currently).
+     * Checks if the input string meets custom validation rules (not used currently).
+     * Designed for additional validation beyond sanitization.
      *
      * @param input The input string to be validated.
      * @return True if the input passes all validation checks, false otherwise.
      */
     private static boolean isValidInput(String input) {
-        // Validate that the input contains only letters, numbers, and some special characters
-        // Add more validation checks as needed
-
-        // Define a regular expression pattern for validation
+        // Define a regular expression pattern to allow only alphanumeric characters and select special characters
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9!@#\\$%^&*()_+\\-={}:;',./?]*$");
+
+        // Create a matcher to check the input against the pattern
         Matcher matcher = pattern.matcher(input);
 
-        // Check if the input matches the pattern
+        // Return true if the input matches the pattern, indicating valid input
         return matcher.matches();
     }
 }
