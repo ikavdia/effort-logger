@@ -22,18 +22,18 @@ import java.time.format.DateTimeFormatter;
 public class EffortLoggingPage extends Application {
     // Declare UI elements and time tracking variables
     private Stage primaryStage;
-    private Label clockStatus;
-    private Button startButton;
-    private ComboBox<String> projectDropdown;
-    private ComboBox<String> lifeCycleDropdown;
-    private ComboBox<String> effortCategoryDropdown;
-    private ComboBox<String> plansDropdown;
-    private Button stopButton;
-    private TextArea logsArea;
-    private Button effortLogsViewButton;
-    private Button editTasksButton;
+    private Label clockStatus; // Displays the status of the timer (running or stopped)
+    private Button startButton; // Starts a new activity
+    private ComboBox<String> projectDropdown; // Dropdown to select project
+    private ComboBox<String> lifeCycleDropdown; // Dropdown to select lifecycle step
+    private ComboBox<String> effortCategoryDropdown; // Dropdown to select effort category
+    private ComboBox<String> plansDropdown; // Dropdown to select plan
+    private Button stopButton; // Stops the ongoing activity
+    private TextArea logsArea; // Area to display activity logs
+    private Button effortLogsViewButton; // Button to view all effort logs
+    private Button editTasksButton; // Button to edit tasks
 
-    private LocalDateTime startTime;
+    private LocalDateTime startTime; // Tracks the start time of an activity
 
     @Override
     public void start(Stage stage) {
@@ -69,7 +69,7 @@ public class EffortLoggingPage extends Application {
 
         // Button to stop the activity
         stopButton = new Button("Stop this Activity");
-        stopButton.setDisable(true);
+        stopButton.setDisable(true); // Initially disabled, enabled after start
 
         // TextArea for logging activities and events
         logsArea = new TextArea();
@@ -151,7 +151,7 @@ public class EffortLoggingPage extends Application {
         hbox.getChildren().addAll(effortLogsViewButton, editTasksButton, logOutButton);
 
         VBox root = new VBox(10);
-        root.getChildren().addAll(clockStatus, startButton, projectDropdown, lifeCycleDropdown, effortCategoryDropdown, plansDropdown,  stopButton, logsArea, hbox);
+        root.getChildren().addAll(clockStatus, startButton, projectDropdown, lifeCycleDropdown, effortCategoryDropdown, plansDropdown, stopButton, logsArea, hbox);
 
         // Scene setup for the primary stage
         Scene scene = new Scene(root, 400, 400);
