@@ -13,10 +13,10 @@ import javafx.stage.Stage;
 /**
  * The EffortLogDisplayPage class extends the JavaFX Application class and serves as the user interface
  * for displaying logged efforts in the Effort Logger application.
- *
+ * Let us simulate a merge conflict in this file
  * This class creates a table view to display various details about logged efforts and provides
  * a button to navigate back to the home page.
- * Let's simulate a merge conflict in this line
+ * I will change a variable name.
  * @author Ishan Kavdia
  */
 
@@ -84,11 +84,11 @@ public class EffortLogDisplayPage extends Application {
         backButton.setOnAction(event -> Utility.openPage("effortloggingpage", stage));
 
         // Layout to hold the TableView and button
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(tableView, backButton);
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(tableView, backButton);
 
         // Create the scene with a specified width and height
-        Scene scene = new Scene(vbox, 1000, 800);
+        Scene scene = new Scene(vBox, 1000, 800);
         stage.setScene(scene);
 
         // Center the stage on the screen and display it
