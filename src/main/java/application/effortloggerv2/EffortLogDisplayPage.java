@@ -13,10 +13,10 @@ import javafx.stage.Stage;
 /**
  * The EffortLogDisplayPage class extends the JavaFX Application class and serves as the user interface
  * for displaying logged efforts in the Effort Logger application.
- * Let us simulate a merge conflict in this file
+ * 
  * This class creates a table view to display various details about logged efforts and provides
  * a button to navigate back to the home page.
- * I will change a variable name.
+ *
  * @author Ishan Kavdia
  */
 
@@ -27,7 +27,7 @@ public class EffortLogDisplayPage extends Application {
     /**
      * The start method is the entry point for the EffortLogDisplayPage application.
      * It initializes the stage, sets up the UI components, and displays the Effort Log data.
-     *
+     * Trying to simulate a merge conflict
      * @param stage The primary stage for this application.
      */
     @Override
